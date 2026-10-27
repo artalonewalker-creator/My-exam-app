@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Exam App</title>
-<meta name="theme-color" content="#000000">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-body{background:#f2f2f2;padding:15px}
-.head{background:#111;color:#fff;padding:20px;border-radius:15px;text-align:center}
-.card{background:#fff;padding:15px;border-radius:12px;margin-top:12px;box-shadow:0 2px 8px #0001}
-.btn{background:#111;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;margin-top:10px}
-.opt{border:2px solid #eee;padding:10px;border-radius:8px;margin-top:8px}
-</style>
-</head>
-<body>
-<div class="head"><h2>📚 My Exam Prep</h2><p>Books + PYQs Practice</p></div>
-<div id="app"></div>
-<script>
-const data={
-"Maths":{books:[{n:"Maths Formula Book",l:"https://drive.google.com"}],pyqs:[{q:"20% of 200 is?",o:["20","40","60","80"],a:1,e:"200/5=40"},{q:"Average of 10,20,30?",o:["10","20","30","40"],a:1,e:"60/3=20"}]},
-"Reasoning":{books:[{n:"Reasoning Tricks PDF",l:"https://drive.google.com"}],pyqs:[{q:"Odd one: 2,3,5,7,9",o:["2","3","5","9"],a:3,e:"9 is not prime"}]},
-"GK":{books:[{n:"Lucent GK",l:"https://drive.google.com"}],pyqs:[{q:"Capital of India?",o:["Mumbai","Delhi","Kolkata","Chennai"],a:1,e:"New Delhi"}]}
-};
-function home(){let h="";for(let t in data){h+=`<div class=card><h3>${t}</h3><p>${data[t].books.length} Books | ${data[t].pyqs.length} PYQs</p><button class=btn onclick="openT('${t}')">Open ${t}</button></div>`}document.getElementById("app").innerHTML=h}
-function openT(t){let d=data[t];let b=d.books.map(x=>`<a href="${x.l}" target=_blank>📖 ${x.n}</a>`).join("<br>");document.getElementById("app").innerHTML=`<div class=card><button class=btn onclick="home()">⬅ Back</button><h2>${t}</h2><br>${b}<hr style="margin:15px 0"><div id=q></div></div>`;showQ(t,0)}
-function showQ(t,i){let q=data[t].pyqs[i];if(!q){document.getElementById("q").innerHTML+="<br>✅ Finished";return}let o=q.o.map((x,j)=>`<div class=opt onclick="check(this,${j},${q.a},'${q.e}','${t}',${i})">${x}</div>`).join("");document.getElementById("q").innerHTML=`<b>Q${i+1}. ${q.q}</b>${o}<p id=ex></p><button class=btn id=nxt style=display:none onclick="showQ('${t}',${i+1})">Next</button>`}
-function check(el,s,c,e,t,i){document.querySelectorAll(".opt").forEach(a=>a.style.pointerEvents="none");if(s==c){el.style.background="#d4edda";el.style.borderColor="green"}else{el.style.background="#f8d7da";el.style.borderColor="red";document.querySelectorAll(".opt")[c].style.background="#d4edda"}document.getElementById("ex").innerHTML=`<br>💡 ${e}`;document.getElementById("nxt").style.display="block"}
-home();
-</script>
-</body>
-</html>
+const books = [
+  {n:"TS DSC SGT Full Material", l:"YOUR_DRIVE_LINK_1"},
+  {n:"TGT Biology Telugu Academy", l:"YOUR_DRIVE_LINK_2"},
+  {n:"Gurukula Previous Papers", l:"YOUR_DRIVE_LINK_3"},
+  {n:"Biology NCERT 6-10", l:"YOUR_DRIVE_LINK_4"}
+];
